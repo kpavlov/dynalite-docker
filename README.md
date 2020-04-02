@@ -24,3 +24,5 @@ services:
     volumes:
     - ./test/initdb.sh:/initdb.sh
 ```
+
+Run `test.sh` to try it.
