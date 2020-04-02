@@ -1,6 +1,10 @@
 # DynamoDB-Local Docker Container with AWS CLI
 
-[![DockerHub Badge](http://dockeri.co/image/kpavlov/)](https://hub.docker.com/r/kpavlov/dynamodb-local)
+[![](https://images.microbadger.com/badges/image/kpavlov/dynamodb-local.svg)](https://microbadger.com/images/kpavlov/dynamodb-local "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/kpavlov/dynamodb-local.svg)](https://microbadger.com/images/kpavlov/dynamodb-local "Get your own version badge on microbadger.com")
+
+[![DockerHub Badge](http://dockeri.co/image/kpavlov/dynamodb-local)](https://hub.docker.com/r/kpavlov/dynamodb-local)
+
 
 DynamoDB-Local Docker container with init script. AWS CLI is also installed.
 
