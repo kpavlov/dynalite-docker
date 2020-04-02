@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  dynamodb:
+    container_name: kdynamodb
+    image: kpavlov/dynamodb-local:latest
+    ports:
+      - '8000:8000'
+    volumes:
+    - ./test/initdb.sh:/initdb.sh
