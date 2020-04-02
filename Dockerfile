@@ -2,7 +2,7 @@ FROM azul/zulu-openjdk-alpine:11-jre
 
 LABEL maintainer="https://github.com/kpavlov"
 
-COPY entrypoint.sh  /
+COPY entrypoint.sh  / 
 COPY initdb.sh  /
 
 ENTRYPOINT "/entrypoint.sh"
@@ -12,6 +12,7 @@ RUN apk add --update py-pip \
     && rm -rf /var/cache/apk/* \
     && chmod +x entrypoint.sh
 
+ENV JAVA_OPTS="-Xms128m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:///dev/urandom -Djava.net.preferIPv4Stack=true"
 ENV DYNAMODB_OPTIONS="-inMemory"
 ENV DYNAMODB_PORT="8000"
 ENV AWS_DEFAULT_REGION="us-east-1"
