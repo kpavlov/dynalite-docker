@@ -1,4 +1,6 @@
-# dynamodb-local-docker
+# DynamoDB-Local Docker Container with AWS CLI
+
+[![DockerHub Badge](http://dockeri.co/image/kpavlov/)](https://hub.docker.com/r/kpavlov/dynamodb-local)
 
 DynamoDB-Local Docker container with init script. AWS CLI is also installed.
 
