@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:14
+FROM azul/zulu-openjdk-alpine:11-jre
 
 LABEL maintainer="https://github.com/kpavlov"
 
