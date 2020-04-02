@@ -1,4 +1,3 @@
-java -version
 java -server -jar DynamoDBLocal.jar $DYNAMODB_OPTIONS -port $DYNAMODB_PORT &
 
 alias aws="/usr/bin/aws"
