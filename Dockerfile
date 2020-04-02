@@ -2,9 +2,15 @@ FROM azul/zulu-openjdk-alpine:14
 
 LABEL maintainer="https://github.com/kpavlov"
 
+COPY entrypoint.sh  /
+COPY initdb.sh  /
+
+ENTRYPOINT "/entrypoint.sh"
+
 RUN apk add --update py-pip \
     && pip install awscli \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && chmod +x entrypoint.sh
 
 ENV DYNAMODB_OPTIONS="-inMemory"
 ENV DYNAMODB_PORT="8000"
@@ -12,11 +18,6 @@ ENV AWS_DEFAULT_REGION="us-east-1"
 ENV AWS_ACCESS_KEY_ID="fakeMyKeyId"
 ENV AWS_SECRET_ACCESS_KEY="fakeSecretAccessKey"
 ENV AWS_CLI_OPTIONS="--endpoint-url http://localhost:8000"
-
-COPY entrypoint.sh  /
-COPY initdb.sh  /
-
-ENTRYPOINT "/entrypoint.sh"
 
 EXPOSE $DYNAMODB_PORT
 
