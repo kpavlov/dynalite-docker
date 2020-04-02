@@ -24,7 +24,7 @@ version: '3.7'
 services:
   dynamodb:
     container_name: kdynamodb
-    image: kpavlov/dynamodb-local:latest
+    image: kpavlov/dynamodb-local
     ports:
       - '8000:8000'
     volumes:
