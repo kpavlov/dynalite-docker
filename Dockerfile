@@ -18,7 +18,7 @@ COPY initdb.sh  /
 
 ENTRYPOINT "/entrypoint.sh"
 
-EXPOSE $PORT/tcp
+EXPOSE $DYNAMODB_PORT
 
 # Download and unpack dynamodb.
 # Links are from: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
