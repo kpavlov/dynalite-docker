@@ -1,5 +1,7 @@
 FROM azul/zulu-openjdk-alpine:14
 
+LABEL maintainer="https://github.com/kpavlov"
+
 RUN apk add --update py-pip \
     && pip install awscli \
     && rm -rf /var/cache/apk/*
@@ -16,7 +18,7 @@ COPY initdb.sh  /
 
 ENTRYPOINT "/entrypoint.sh"
 
-EXPOSE $PORT
+EXPOSE $PORT/tcp
 
 # Download and unpack dynamodb.
 # Links are from: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
