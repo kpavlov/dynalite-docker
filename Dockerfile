@@ -1,27 +1,18 @@
-FROM azul/zulu-openjdk-alpine:11-jre
+FROM dimaqq/dynalite
 
-LABEL maintainer="https://github.com/kpavlov"
+LABEL maintainer="Konstantin Pavlov <https://github.com/kpavlov>"
 
-COPY entrypoint.sh  / 
+ENV AWS_DEFAULT_REGION="us-east-1"
+ENV AWS_ACCESS_KEY_ID=fakeMyKeyId
+ENV AWS_SECRET_ACCESS_KEY=fakeSecretAccessKey
+ENV AWS_CLI_OPTIONS="--endpoint-url http://localhost:8000"
+
+COPY entrypoint.sh  /
 COPY initdb.sh  /
 
 ENTRYPOINT "/entrypoint.sh"
 
-RUN apk add --update py-pip \
+RUN apk add --update py-pip  \
     && pip install awscli \
     && rm -rf /var/cache/apk/* \
     && chmod +x entrypoint.sh
-
-ENV JAVA_OPTS="-Xms128m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:///dev/urandom -Djava.net.preferIPv4Stack=true"
-ENV DYNAMODB_OPTIONS="-inMemory"
-ENV DYNAMODB_PORT="8000"
-ENV AWS_DEFAULT_REGION="us-east-1"
-ENV AWS_ACCESS_KEY_ID="fakeMyKeyId"
-ENV AWS_SECRET_ACCESS_KEY="fakeSecretAccessKey"
-ENV AWS_CLI_OPTIONS="--endpoint-url http://localhost:8000"
-
-EXPOSE $DYNAMODB_PORT
-
-# Download and unpack dynamodb.
-# Links are from: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html
-RUN wget https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz -q -O - | tar -xz

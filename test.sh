@@ -1,3 +1,5 @@
-docker build --force-rm --no-cache -t kpavlov/dynamodb-local:dev .
+set -e
+
+docker build --force-rm --no-cache -t kpavlov/dynalite:dev .
 docker-compose up --remove-orphans --renew-anon-volumes
-docker-compose rm --force -v
+docker-compose down --force -v
