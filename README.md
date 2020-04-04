@@ -19,6 +19,10 @@ Build:
 
     docker build --force-rm --no-cache -t kpavlov/dynalite .
     
+Running:
+
+    docker run --rm --name dynalite -p 8000:8000 --volume "$(pwd)/test/initdb.sh:/initdb.sh" -it kpavlov/dynalite 
+    
 Running in docker-compose:
 
 ```dicker-compose.yml
